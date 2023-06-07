@@ -8,4 +8,6 @@
   <dimen name="header_padding">12dp</dimen>
   <dimen name="user_size">44dp</dimen>
   <dimen name="header_space">8.5dp</dimen>
+  <dimen name="back_w">32dp</dimen>
+  <dimen name="back_h">35dp</dimen>
 </resources>
