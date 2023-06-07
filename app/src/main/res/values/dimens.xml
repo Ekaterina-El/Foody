@@ -10,4 +10,6 @@
   <dimen name="header_space">8.5dp</dimen>
   <dimen name="back_w">32dp</dimen>
   <dimen name="back_h">35dp</dimen>
+  <dimen name="meal_vrt">14dp</dimen>
+  <dimen name="meal_hrz">8dp</dimen>
 </resources>

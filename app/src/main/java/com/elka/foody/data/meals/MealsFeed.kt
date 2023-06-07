@@ -1,7 +1,7 @@
 package com.elka.foody.data.meals
 
-import com.elka.foody.domain.meals.Meals
+import com.elka.foody.domain.meals.Meal
 
 data class MealsFeed(
-  val dishes: List<Meals>
+  val dishes: List<Meal>
 )

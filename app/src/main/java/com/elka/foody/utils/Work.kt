@@ -1,7 +1,8 @@
 package com.elka.foody.utils
 
 enum class Work {
-  LOAD_CATEGORIES
+  LOAD_CATEGORIES,
+  LOAD_MEALS
 }
 
 fun hasLoads(works: List<Work>, w: MutableList<Work>) = when {
