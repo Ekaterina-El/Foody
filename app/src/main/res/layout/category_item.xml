@@ -33,16 +33,11 @@
           android:text="@{category.name}"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
-          android:layout_marginStart="16dp"
-          android:layout_marginTop="12dp"
-          android:fontFamily="@font/sfp_pro_display_medium"
-          android:lineHeight="25dp"
-          android:textColor="@color/text_color"
-          android:textSize="24sp"
           app:layout_constraintEnd_toEndOf="@id/guideline"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toTopOf="parent"
-          tools:text="Пекарни и кондитерские" />
+          tools:text="Пекарни и кондитерские"
+          style="@style/title" />
 
       <androidx.constraintlayout.widget.Guideline
           android:id="@+id/guideline"
