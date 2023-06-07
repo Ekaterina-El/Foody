@@ -14,11 +14,8 @@ class MealsViewModel: BaseViewModel() {
   private val getTagsUseCase = GetTagsUseCase(repository)
   private val getCurrentTagUseCase = GetCurrentTagUseCase(repository)
 
-
   val meals = getAllMealsUseCase.getAll()
-
   val tags = getTagsUseCase.getTags()
-  val currentTag = getCurrentTagUseCase.getCurrentTag()
 
   fun loadMeals() {
     addWork(Work.LOAD_MEALS)

@@ -13,9 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.elka.foody.R
 import com.elka.foody.databinding.MealsFragmentBinding
 import com.elka.foody.domain.meals.Meal
+import com.elka.foody.domain.meals.Tag
 import com.elka.foody.presentation.GridItemDecorator
 import com.elka.foody.presentation.LinearItemDecorator
-import com.elka.foody.domain.meals.Tag
 import com.elka.foody.presentation.tags.TagAdapter
 import com.elka.foody.utils.Work
 import com.elka.foody.utils.hasLoads
@@ -25,9 +25,11 @@ class MealsFragment : Fragment() {
   private val mealsViewModel by lazy { ViewModelProvider(this)[MealsViewModel::class.java] }
 
   private val mealsAdapter by lazy { MealsAdapter() }
-  private val tagAdapter by lazy { TagAdapter {
-    mealsViewModel.setActiveTag(it)
-  } }
+  private val tagAdapter by lazy {
+    TagAdapter {
+      mealsViewModel.setActiveTag(it)
+    }
+  }
 
   private val works = listOf(Work.LOAD_MEALS)
 

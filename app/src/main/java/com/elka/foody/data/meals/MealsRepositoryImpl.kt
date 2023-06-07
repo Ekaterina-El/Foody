@@ -9,13 +9,15 @@ import com.elka.foody.domain.meals.Tag
 
 object MealsRepositoryImpl : MealsRepository {
   private val api = MealsAPI
+
+  private val sortedMeals = MutableLiveData<List<Meal>>(listOf())
   private val meals = MutableLiveData<List<Meal>>(listOf())
 
   private val tags = MutableLiveData<List<Tag>>(listOf())
   private val currentTag = MutableLiveData<Tag?>(null)
 
   override fun getMeals(): LiveData<List<Meal>> {
-    return meals
+    return sortedMeals
   }
 
   override fun getTags(): LiveData<List<Tag>> {
@@ -32,14 +34,22 @@ object MealsRepositoryImpl : MealsRepository {
         )
         else it
       }
-      this@MealsRepositoryImpl.meals.value = m
+        this@MealsRepositoryImpl.meals.value = m
       updateTags(m)
+      sortMeals()
       onEnd()
     }
   }
 
+  private fun sortMeals() {
+    val currentTag = currentTag.value!!.title
+    sortedMeals.value = meals.value!!.filter {it.tags.contains(currentTag) }
+  }
+
   override fun setActive(tag: Tag) {
     val currentTagTitle = currentTag.value?.title ?: ""
+    if (currentTagTitle == tag.title) return
+
     tags.value = tags.value!!.map {
       return@map when (it.title) {
         currentTagTitle -> it.copy(isActive = false)
@@ -48,6 +58,7 @@ object MealsRepositoryImpl : MealsRepository {
       }
     }
     currentTag.value = tag
+    sortMeals()
   }
 
   override fun getCurrentTag(): LiveData<Tag?> {
@@ -63,6 +74,7 @@ object MealsRepositoryImpl : MealsRepository {
     }
     val tags = tagsTitle.map { Tag(title = it, isActive = false) }
     this@MealsRepositoryImpl.tags.value = tags
+    currentTag.value = null
     setActive(tags[0])
   }
 }
