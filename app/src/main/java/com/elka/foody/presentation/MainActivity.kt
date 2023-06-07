@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.elka.foody.R
+import com.elka.foody.data.meals.MealsRepositoryImpl
 import com.elka.foody.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -14,6 +14,9 @@ object MealsRepositoryImpl : MealsRepository {
   }
 
   override fun loadMeals(onEnd: () -> Unit) {
-    MealsAPI.getAll({ onEnd() }) { onEnd() }
+    api.getAll({ onEnd() }) {
+      meals.value = it.dishes
+      onEnd()
+    }
   }
 }
