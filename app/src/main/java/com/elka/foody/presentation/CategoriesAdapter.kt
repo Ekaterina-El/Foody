@@ -7,6 +7,8 @@ import com.elka.foody.databinding.CategoryItemBinding
 import com.elka.foody.domain.Category
 
 class CategoriesAdapter: ListAdapter<Category, CategoryViewHolder>(CategoryItemDiffCallback()) {
+  var onItemClickListener: ((Category) -> Unit)? = null
+
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
     val binding = CategoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     return CategoryViewHolder(binding)
@@ -14,6 +16,6 @@ class CategoriesAdapter: ListAdapter<Category, CategoryViewHolder>(CategoryItemD
 
   override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
     val category = getItem(position)
-    holder.bind(category)
+    holder.bind(category, onItemClickListener)
   }
 }

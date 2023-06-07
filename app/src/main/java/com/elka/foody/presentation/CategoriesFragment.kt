@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.elka.foody.R
 import com.elka.foody.data.CategoryRepositoryImpl
@@ -33,10 +34,12 @@ class CategoriesFragment : Fragment() {
 
 
   private fun setupCategoriesList() {
-    val decorator = LinearItemDecorator(
-      resources.getDimensionPixelSize(R.dimen.categories_horz),
-    )
+    val decorator = LinearItemDecorator(resources.getDimensionPixelSize(R.dimen.categories_horz))
     binding.categories.addItemDecoration(decorator)
+
+    adapter.onItemClickListener = {
+      Toast.makeText(requireContext(), "Category ${it.name}", Toast.LENGTH_SHORT).show()
+    }
 
     val items = listOf(
       Category(
