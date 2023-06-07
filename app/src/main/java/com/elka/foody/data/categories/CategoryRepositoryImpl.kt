@@ -1,4 +1,4 @@
-package com.elka.foody.data
+package com.elka.foody.data.categories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,7 +14,7 @@ object CategoryRepositoryImpl: CategoryRepository {
   }
 
   override fun loadCategories(onEnd: () -> Unit) {
-    api.getAll({ onEnd() }) {
+    CategoriesAPI.getAll({ onEnd() }) {
       categories.value = it.сategories
       onEnd()
     }

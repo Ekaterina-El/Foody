@@ -1,4 +1,4 @@
-package com.elka.foody.data
+package com.elka.foody.data.categories
 
 import com.elka.foody.domain.categories.Category
 

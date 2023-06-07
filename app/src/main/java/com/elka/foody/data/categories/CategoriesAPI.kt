@@ -1,5 +1,6 @@
-package com.elka.foody.data
+package com.elka.foody.data.categories
 
+import com.elka.foody.data.HttpConnector
 import com.google.gson.Gson
 
 object CategoriesAPI {
@@ -7,7 +8,7 @@ object CategoriesAPI {
   val connector = HttpConnector
 
   fun getAll(onError: ((Throwable) -> Unit) = {}, onSuccess: (CategoriesFeed) -> Unit){
-    val a = connector.createRequest(API_URL).map { Gson().fromJson(it, CategoriesFeed::class.java) }
+    val a = HttpConnector.createRequest(API_URL).map { Gson().fromJson(it, CategoriesFeed::class.java) }
       .subscribe({ feed -> onSuccess(feed)}) {
         error -> onError(error)
       }
