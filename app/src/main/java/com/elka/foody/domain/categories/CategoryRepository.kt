@@ -1,4 +1,4 @@
-package com.elka.foody.domain
+package com.elka.foody.domain.categories
 
 import androidx.lifecycle.LiveData
 

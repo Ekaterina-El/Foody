@@ -6,7 +6,7 @@
   <data>
     <variable
         name="category"
-        type="com.elka.foody.domain.Category" />
+        type="com.elka.foody.domain.categories.Category" />
   </data>
 
   <androidx.cardview.widget.CardView

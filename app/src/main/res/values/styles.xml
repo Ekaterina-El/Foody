@@ -22,5 +22,13 @@
     <item name="android:textSize">20sp</item>
   </style>
 
+  <style name="icon_btn">
+    <item name="android:layout_width">40dp</item>
+    <item name="android:layout_height">40dp</item>
+    <item name="android:clickable">true</item>
+    <item name="android:focusable">true</item>
+    <item name="android:foreground">?android:attr/selectableItemBackground</item>
+  </style>
+
   <color name="subtext_color">#80000000</color>
 </resources>

@@ -2,7 +2,7 @@ package com.elka.foody.presentation.categories
 
 import androidx.recyclerview.widget.RecyclerView
 import com.elka.foody.databinding.CategoryItemBinding
-import com.elka.foody.domain.Category
+import com.elka.foody.domain.categories.Category
 
 class CategoryViewHolder(private val binding: CategoryItemBinding): RecyclerView.ViewHolder(binding.root) {
   fun bind(category: Category, onItemClickListener: ((Category) -> Unit)?) {

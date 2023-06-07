@@ -8,9 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.elka.foody.R
 import com.elka.foody.databinding.CategoriesFragmentBinding
-import com.elka.foody.domain.Category
+import com.elka.foody.domain.categories.Category
 import com.elka.foody.presentation.LinearItemDecorator
 import com.elka.foody.utils.WithDate
 import com.elka.foody.utils.WithLocation
@@ -94,11 +96,12 @@ class CategoriesFragment : Fragment() {
 
 
   private fun setupCategoriesList() {
-    val decorator = LinearItemDecorator(resources.getDimensionPixelSize(R.dimen.categories_horz))
+    val decorator = LinearItemDecorator(resources.getDimensionPixelSize(R.dimen.categories_horz), LinearLayoutManager.VERTICAL)
     binding.categories.addItemDecoration(decorator)
 
     adapter.onItemClickListener = {
-      Toast.makeText(requireContext(), "Category ${it.name}", Toast.LENGTH_SHORT).show()
+      val a = CategoriesFragmentDirections.actionCategoriesFragmentToMealsFragment(it.name)
+      findNavController().navigate(a)
     }
   }
 }

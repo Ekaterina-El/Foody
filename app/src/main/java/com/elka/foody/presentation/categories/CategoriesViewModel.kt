@@ -1,10 +1,8 @@
 package com.elka.foody.presentation.categories
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.elka.foody.data.CategoryRepositoryImpl
-import com.elka.foody.domain.GetCategoriesUseCase
-import com.elka.foody.domain.LoadCategoriesUseCase
+import com.elka.foody.data.categories.CategoryRepositoryImpl
+import com.elka.foody.domain.categories.GetCategoriesUseCase
+import com.elka.foody.domain.categories.LoadCategoriesUseCase
 import com.elka.foody.presentation.BaseViewModel
 import com.elka.foody.utils.Work
 

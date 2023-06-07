@@ -9,5 +9,18 @@
       tools:layout="@layout/categories_fragment"
       android:id="@+id/categoriesFragment"
       android:name="com.elka.foody.presentation.categories.CategoriesFragment"
-      android:label="CategoriesFragment" />
+      android:label="CategoriesFragment" >
+    <action
+        android:id="@+id/action_categoriesFragment_to_mealsFragment"
+        app:destination="@id/mealsFragment" />
+  </fragment>
+  <fragment
+      android:id="@+id/mealsFragment"
+      tools:layout="@layout/meals_fragment"
+      android:name="com.elka.foody.presentation.meals.MealsFragment"
+      android:label="MealsFragment" >
+    <argument
+        android:name="category"
+        app:argType="string" />
+  </fragment>
 </navigation>

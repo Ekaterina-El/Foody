@@ -1,4 +1,4 @@
-package com.elka.foody.domain
+package com.elka.foody.domain.categories
 
 class LoadCategoriesUseCase(private val repository: CategoryRepository) {
   fun loadCategories(onEnd: () -> Unit) {
