@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.elka.foody.R
 import com.elka.foody.databinding.CategoriesFragmentBinding
@@ -99,7 +100,8 @@ class CategoriesFragment : Fragment() {
     binding.categories.addItemDecoration(decorator)
 
     adapter.onItemClickListener = {
-      Toast.makeText(requireContext(), "Category ${it.name}", Toast.LENGTH_SHORT).show()
+      val a = CategoriesFragmentDirections.actionCategoriesFragmentToMealsFragment(it.name)
+      findNavController().navigate(a)
     }
   }
 }

@@ -68,7 +68,8 @@ class MealsFragment : Fragment() {
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     super.onViewCreated(view, savedInstanceState)
 
-    binding.category = "Азиатская кухня"
+    val args =  MealsFragmentArgs.fromBundle(requireArguments())
+    binding.category = args.category
 
     update()
     with(binding.swiper) {
