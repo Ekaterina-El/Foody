@@ -4,6 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
   <data>
+    <variable
+        name="location"
+        type="String" />
+
+    <variable
+        name="date"
+        type="String" />
 
     <variable
         name="adapter"
@@ -39,12 +46,14 @@
           android:orientation="vertical">
           <TextView
             style="@style/head"
-            android:text="Санкт-Петербург"
+            tools:text="Санкт-Петербург"
+              android:text="@{location}"
               android:layout_width="match_parent"
               android:layout_height="wrap_content" />
         <TextView
             style="@style/subhead"
-            android:text="12 Августа, 2023"
+            android:text="@{date}"
+            tools:text="12 Августа, 2023"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
       </LinearLayout>

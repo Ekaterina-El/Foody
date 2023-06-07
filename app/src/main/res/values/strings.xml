@@ -4,4 +4,5 @@
   <string name="search_screen">Поиск</string>
   <string name="basket_screen">Корзина</string>
   <string name="account_screen">Аккаунт</string>
+  <string name="gps_off">Отсутствует сигнал GPS</string>
 </resources>
