@@ -12,6 +12,10 @@
     <variable
         name="adapter"
         type="com.elka.foody.presentation.meals.MealsAdapter" />
+
+    <variable
+        name="tagsAdapter"
+        type="com.elka.foody.presentation.tags.TagAdapter" />
   </data>
 
 
@@ -28,8 +32,8 @@
           android:id="@+id/header"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:orientation="horizontal"
           android:gravity="center"
+          android:orientation="horizontal"
           android:paddingHorizontal="@dimen/app_padding"
           android:paddingVertical="@dimen/header_padding"
           app:layout_constraintEnd_toEndOf="parent"
@@ -43,10 +47,10 @@
 
         <TextView
             style="@style/head"
-            android:layout_weight="1"
             android:layout_width="0dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="@{category}"
             tools:text="Азиатская кухня" />
 
@@ -69,17 +73,33 @@
       </LinearLayout>
 
       <androidx.recyclerview.widget.RecyclerView
-          android:id="@+id/meals"
+          android:id="@+id/tags"
           android:layout_width="0dp"
-          android:layout_height="0dp"
-          android:adapter="@{adapter}"
-
+          android:layout_height="wrap_content"
           android:layout_marginHorizontal="@dimen/app_padding"
-          tools:itemCount="10"
-          app:layout_constraintBottom_toBottomOf="parent"
+          android:adapter="@{tagsAdapter}"
+          android:orientation="horizontal"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
           app:layout_constraintEnd_toEndOf="parent"
           app:layout_constraintStart_toStartOf="parent"
           app:layout_constraintTop_toBottomOf="@id/header"
+          tools:itemCount="10"
+          tools:listitem="@layout/tag_item" />
+
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/meals"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_marginHorizontal="@dimen/app_padding"
+          android:layout_marginTop="16dp"
+          android:adapter="@{adapter}"
+          app:spanCount="3"
+          app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/tags"
+          tools:itemCount="10"
           tools:listitem="@layout/meal_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
   </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

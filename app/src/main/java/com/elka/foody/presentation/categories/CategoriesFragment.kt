@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.elka.foody.R
 import com.elka.foody.databinding.CategoriesFragmentBinding
 import com.elka.foody.domain.categories.Category
@@ -94,7 +95,7 @@ class CategoriesFragment : Fragment() {
 
 
   private fun setupCategoriesList() {
-    val decorator = LinearItemDecorator(resources.getDimensionPixelSize(R.dimen.categories_horz))
+    val decorator = LinearItemDecorator(resources.getDimensionPixelSize(R.dimen.categories_horz), LinearLayoutManager.VERTICAL)
     binding.categories.addItemDecoration(decorator)
 
     adapter.onItemClickListener = {

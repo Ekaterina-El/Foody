@@ -12,4 +12,5 @@
   <dimen name="back_h">35dp</dimen>
   <dimen name="meal_vrt">14dp</dimen>
   <dimen name="meal_hrz">8dp</dimen>
+  <dimen name="tags_horz">8dp</dimen>
 </resources>

@@ -1,7 +1,6 @@
 package com.elka.foody.presentation.meals
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,19 +9,25 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.elka.foody.R
 import com.elka.foody.databinding.MealsFragmentBinding
 import com.elka.foody.domain.meals.Meal
 import com.elka.foody.presentation.GridItemDecorator
+import com.elka.foody.presentation.LinearItemDecorator
+import com.elka.foody.presentation.tags.Tag
+import com.elka.foody.presentation.tags.TagAdapter
 import com.elka.foody.utils.Work
 import com.elka.foody.utils.hasLoads
 
 class MealsFragment : Fragment() {
   private lateinit var binding: MealsFragmentBinding
-  private val adapter by lazy { MealsAdapter() }
   private val mealsViewModel by lazy { ViewModelProvider(this)[MealsViewModel::class.java] }
 
-  private val works = listOf(Work.LOAD_MEALS,)
+  private val mealsAdapter by lazy { MealsAdapter() }
+  private val tagAdapter by lazy { TagAdapter() }
+
+  private val works = listOf(Work.LOAD_MEALS)
 
   private val hasLoads: Boolean
     get() {
@@ -36,11 +41,14 @@ class MealsFragment : Fragment() {
   }
 
   private val tagsObserver = Observer<List<String>> {
-    Log.d("tagsObserver", it.toString())
+    val currantTag = mealsViewModel.currentTag.value
+    val tags =
+      it.map { title -> Tag(title, currantTag != null && currantTag.title == title) }
+    tagAdapter.submitList(tags)
   }
 
   private val mealsObserver = Observer<List<Meal>> {
-    adapter.submitList(it)
+    mealsAdapter.submitList(it)
   }
 
   override fun onCreateView(
@@ -49,7 +57,8 @@ class MealsFragment : Fragment() {
     binding = MealsFragmentBinding.inflate(inflater, container, false)
     binding.apply {
       lifecycleOwner = viewLifecycleOwner
-      adapter = this@MealsFragment.adapter
+      adapter = this@MealsFragment.mealsAdapter
+      tagsAdapter = this@MealsFragment.tagAdapter
     }
     setupMealsList()
     return binding.root
@@ -96,7 +105,13 @@ class MealsFragment : Fragment() {
     )
     binding.meals.addItemDecoration(decorator)
 
-    adapter.onItemClickListener = {
+    val tagsDecorator = LinearItemDecorator(
+      resources.getDimensionPixelSize(R.dimen.tags_horz),
+      LinearLayoutManager.HORIZONTAL
+    )
+    binding.tags.addItemDecoration(tagsDecorator)
+
+    mealsAdapter.onItemClickListener = {
       openMealDialog(it)
       Toast.makeText(requireContext(), "Meal ${it.name}", Toast.LENGTH_SHORT).show()
     }
@@ -106,7 +121,7 @@ class MealsFragment : Fragment() {
     object : MealDialog.Companion.Listener {
       override fun addToBasket(meal: Meal) {
         Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
-          mealDialog.disagree()
+        mealDialog.disagree()
       }
     }
   }
@@ -115,7 +130,7 @@ class MealsFragment : Fragment() {
   }
 
   private fun openMealDialog(meal: Meal) {
-      mealDialog.open(meal)
+    mealDialog.open(meal)
   }
 
 }
