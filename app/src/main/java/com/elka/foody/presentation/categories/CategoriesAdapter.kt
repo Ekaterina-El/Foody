@@ -1,4 +1,4 @@
-package com.elka.foody.presentation
+package com.elka.foody.presentation.categories
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -13,9 +13,10 @@ object CategoryRepositoryImpl: CategoryRepository {
     return categories
   }
 
-  override fun loadCategories() {
-    api.getAll {
+  override fun loadCategories(onEnd: () -> Unit) {
+    api.getAll({ onEnd() }) {
       categories.value = it.сategories
+      onEnd()
     }
   }
 }
