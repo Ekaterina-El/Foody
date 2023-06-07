@@ -10,10 +10,15 @@ import com.elka.foody.R
 import com.elka.foody.data.CategoryRepositoryImpl
 import com.elka.foody.databinding.CategoriesFragmentBinding
 import com.elka.foody.domain.Category
+import com.elka.foody.utils.WithDate
+import com.elka.foody.utils.WithLocation
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CategoriesFragment : Fragment() {
   private lateinit var binding: CategoriesFragmentBinding
   private val adapter by lazy { CategoriesAdapter() }
+  private val location by lazy { WithLocation(requireContext()) }
 
   override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -30,6 +35,17 @@ class CategoriesFragment : Fragment() {
   override fun onResume() {
     super.onResume()
     CategoryRepositoryImpl.loadCategories()
+
+    updateLocationDate()
+  }
+
+  private fun updateLocationDate() {
+    binding.date = WithDate.getDateString()
+    location.requestLocation({ city ->
+      binding.location = city
+    }) {
+      binding.location = getString(R.string.gps_off)
+    }
   }
 
 

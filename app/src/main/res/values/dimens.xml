@@ -2,4 +2,10 @@
 <resources>
   <dimen name="categories_horz">5dp</dimen>
   <dimen name="categories_vrt">16dp</dimen>
+  <dimen name="location_w">15dp</dimen>
+  <dimen name="location_h">18dp</dimen>
+  <dimen name="app_padding">16dp</dimen>
+  <dimen name="header_padding">12dp</dimen>
+  <dimen name="user_size">44dp</dimen>
+  <dimen name="header_space">8.5dp</dimen>
 </resources>
