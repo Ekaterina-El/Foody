@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.elka.foody.R
 import com.elka.foody.databinding.CategoriesFragmentBinding
-import com.elka.foody.domain.Category
+import com.elka.foody.domain.categories.Category
 import com.elka.foody.presentation.LinearItemDecorator
 import com.elka.foody.utils.WithDate
 import com.elka.foody.utils.WithLocation

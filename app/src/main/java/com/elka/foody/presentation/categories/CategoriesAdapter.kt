@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.elka.foody.databinding.CategoryItemBinding
-import com.elka.foody.domain.Category
+import com.elka.foody.domain.categories.Category
 
 class CategoriesAdapter: ListAdapter<Category, CategoryViewHolder>(CategoryItemDiffCallback()) {
   var onItemClickListener: ((Category) -> Unit)? = null
