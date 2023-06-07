@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.elka.foody.R
@@ -57,6 +58,7 @@ class MealsFragment : Fragment() {
   ): View {
     binding = MealsFragmentBinding.inflate(inflater, container, false)
     binding.apply {
+      master = this@MealsFragment
       lifecycleOwner = viewLifecycleOwner
       adapter = this@MealsFragment.mealsAdapter
       tagsAdapter = this@MealsFragment.tagAdapter
@@ -135,4 +137,7 @@ class MealsFragment : Fragment() {
     mealDialog.open(meal)
   }
 
+  fun goBack() {
+    findNavController().popBackStack()
+  }
 }

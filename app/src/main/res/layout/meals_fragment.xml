@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
   <data>
+    <variable
+        name="master"
+        type="com.elka.foody.presentation.meals.MealsFragment" />
 
     <variable
         name="category"
@@ -41,6 +44,7 @@
           app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:onClick="@{() -> master.goBack()}"
             android:layout_width="@dimen/back_w"
             android:layout_height="@dimen/back_h"
             android:src="@drawable/ic_back" />
