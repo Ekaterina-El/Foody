@@ -8,5 +8,6 @@ class MealViewHolder(private val binding: MealItemBinding) : RecyclerView.ViewHo
   fun bind(meal: Meal, onItemClickListener: ((Meal) -> Unit)?) {
     binding.meal = meal
     binding.root.setOnClickListener { onItemClickListener?.invoke(meal) }
+    binding.image.setOnClickListener { onItemClickListener?.invoke(meal) }
   }
 }

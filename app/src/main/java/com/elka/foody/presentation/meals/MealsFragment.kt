@@ -92,8 +92,25 @@ class MealsFragment : Fragment() {
     binding.meals.addItemDecoration(decorator)
 
     adapter.onItemClickListener = {
+      openMealDialog(it)
       Toast.makeText(requireContext(), "Meal ${it.name}", Toast.LENGTH_SHORT).show()
     }
+  }
+
+  private val mealDialogListener by lazy {
+    object : MealDialog.Companion.Listener {
+      override fun addToBasket(meal: Meal) {
+        Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
+          mealDialog.disagree()
+      }
+    }
+  }
+  private val mealDialog: MealDialog by lazy {
+    MealDialog(requireContext(), mealDialogListener)
+  }
+
+  private fun openMealDialog(meal: Meal) {
+      mealDialog.open(meal)
   }
 
 }

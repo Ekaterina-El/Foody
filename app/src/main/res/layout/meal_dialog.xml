@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
   <data>
-
+    <variable
+        name="master"
+        type="com.elka.foody.presentation.meals.MealDialog" />
     <variable
         name="meal"
         type="com.elka.foody.domain.meals.Meal" />
   </data>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
   <LinearLayout
       android:background="@drawable/dialog_wrapper"
@@ -34,7 +39,7 @@
 
 
         <androidx.cardview.widget.CardView
-
+            android:onClick="@{() -> master.disagree()}"
             android:id="@+id/close"
             style="@style/icon_btn"
             app:cardElevation="0dp"
@@ -85,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="16sp"
+        android:text="@{meal.name}"
         tools:text="Рыба с овощами и рисом" />
 
     <LinearLayout
@@ -118,9 +124,9 @@
           android:layout_height="wrap_content"
           tools:text="560г" />
     </LinearLayout>
-
+    
     <TextView
-        android:text="@{meal.descriptor}"
+        android:text="@{meal.description}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -131,10 +137,12 @@
         android:text="@string/add_to_backet"
         android:textAllCaps="false"
         style="@style/text"
+        android:onClick="@{() -> master.addToBasket()}"
         android:textSize="16sp"
         android:background="@drawable/btn_wrapper"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
   </LinearLayout>
+</ScrollView>
 </layout>
