@@ -1,6 +1,7 @@
 package com.elka.foody.presentation.meals
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,9 +22,7 @@ class MealsFragment : Fragment() {
   private val adapter by lazy { MealsAdapter() }
   private val mealsViewModel by lazy { ViewModelProvider(this)[MealsViewModel::class.java] }
 
-  private val works = listOf(
-    Work.LOAD_MEALS,
-  )
+  private val works = listOf(Work.LOAD_MEALS,)
 
   private val hasLoads: Boolean
     get() {
@@ -34,6 +33,10 @@ class MealsFragment : Fragment() {
 
   private val workObserver = Observer<List<Work>> {
     binding.swiper.isRefreshing = hasLoads
+  }
+
+  private val tagsObserver = Observer<List<String>> {
+    Log.d("tagsObserver", it.toString())
   }
 
   private val mealsObserver = Observer<List<Meal>> {
@@ -69,12 +72,14 @@ class MealsFragment : Fragment() {
     super.onResume()
     mealsViewModel.meals.observe(this, mealsObserver)
     mealsViewModel.work.observe(this, workObserver)
+    mealsViewModel.tags.observe(this, tagsObserver)
   }
 
   override fun onStop() {
     super.onStop()
     mealsViewModel.meals.removeObserver(mealsObserver)
     mealsViewModel.work.removeObserver(workObserver)
+    mealsViewModel.tags.removeObserver(tagsObserver)
   }
 
   private fun update() {

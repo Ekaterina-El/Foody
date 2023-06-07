@@ -10,5 +10,7 @@ data class Meal(
   val description: String,
   @SerializedName("image_url")
   val imageUrl: String,
-  val tags: List<String>? = null
+
+  @SerializedName("tegs")
+  val tags: List<String>
 )

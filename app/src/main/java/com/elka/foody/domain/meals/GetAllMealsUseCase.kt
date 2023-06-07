@@ -4,6 +4,6 @@ import androidx.lifecycle.LiveData
 
 class GetAllMealsUseCase(private val repository: MealsRepository) {
   fun getAll(): LiveData<List<Meal>> {
-    return repository.getAll()
+    return repository.getMeals()
   }
 }
