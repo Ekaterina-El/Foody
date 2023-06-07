@@ -1,3 +1,7 @@
 <resources>
   <string name="app_name">Foody</string>
+  <string name="main_screen">Главная</string>
+  <string name="search_screen">Поиск</string>
+  <string name="basket_screen">Корзина</string>
+  <string name="account_screen">Аккаунт</string>
 </resources>

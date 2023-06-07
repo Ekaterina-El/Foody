@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+    <variable
+        name="category"
+        type="com.elka.foody.domain.Category" />
+  </data>
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="148dp"
+      android:clickable="true"
+      android:focusable="true"
+      android:foreground="?android:attr/selectableItemBackground"
+      app:cardCornerRadius="10dp"
+      app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <ImageView
+          app:imageUrl="@{category.imageUrl}"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:scaleType="centerCrop"
+          tools:src="@drawable/placeholder" />
+
+      <TextView
+          android:text="@{category.name}"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="16dp"
+          android:layout_marginTop="12dp"
+          android:fontFamily="@font/sfp_pro_display_medium"
+          android:lineHeight="25dp"
+          android:textColor="@color/text_color"
+          android:textSize="24sp"
+          app:layout_constraintEnd_toEndOf="@id/guideline"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent"
+          tools:text="Пекарни и кондитерские" />
+
+      <androidx.constraintlayout.widget.Guideline
+          android:id="@+id/guideline"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          app:layout_constraintGuide_percent="0.58" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.cardview.widget.CardView>
+</layout>

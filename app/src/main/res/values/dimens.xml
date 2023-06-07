@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <dimen name="categories_horz">5dp</dimen>
+  <dimen name="categories_vrt">16dp</dimen>
+</resources>
