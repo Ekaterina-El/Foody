@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     setContentView(binding.root)
 
     setupNavigation()
-    CategoryRepositoryImpl.loadCategories()
   }
 
   private fun setupNavigation() {
