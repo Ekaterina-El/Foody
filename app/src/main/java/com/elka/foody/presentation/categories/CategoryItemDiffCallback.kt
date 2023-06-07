@@ -1,4 +1,4 @@
-package com.elka.foody.presentation
+package com.elka.foody.presentation.categories
 
 import androidx.recyclerview.widget.DiffUtil
 import com.elka.foody.domain.Category

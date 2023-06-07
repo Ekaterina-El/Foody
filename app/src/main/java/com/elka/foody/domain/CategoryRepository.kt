@@ -4,5 +4,5 @@ import androidx.lifecycle.LiveData
 
 interface CategoryRepository {
   fun getCategories(): LiveData<List<Category>>
-  fun loadCategories()
+  fun loadCategories(onEnd: () -> Unit)
 }
