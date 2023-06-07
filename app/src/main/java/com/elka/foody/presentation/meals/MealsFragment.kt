@@ -15,7 +15,7 @@ import com.elka.foody.databinding.MealsFragmentBinding
 import com.elka.foody.domain.meals.Meal
 import com.elka.foody.presentation.GridItemDecorator
 import com.elka.foody.presentation.LinearItemDecorator
-import com.elka.foody.presentation.tags.Tag
+import com.elka.foody.domain.meals.Tag
 import com.elka.foody.presentation.tags.TagAdapter
 import com.elka.foody.utils.Work
 import com.elka.foody.utils.hasLoads
@@ -25,7 +25,9 @@ class MealsFragment : Fragment() {
   private val mealsViewModel by lazy { ViewModelProvider(this)[MealsViewModel::class.java] }
 
   private val mealsAdapter by lazy { MealsAdapter() }
-  private val tagAdapter by lazy { TagAdapter() }
+  private val tagAdapter by lazy { TagAdapter {
+    mealsViewModel.setActiveTag(it)
+  } }
 
   private val works = listOf(Work.LOAD_MEALS)
 
@@ -40,11 +42,8 @@ class MealsFragment : Fragment() {
     binding.swiper.isRefreshing = hasLoads
   }
 
-  private val tagsObserver = Observer<List<String>> {
-    val currantTag = mealsViewModel.currentTag.value
-    val tags =
-      it.map { title -> Tag(title, currantTag != null && currantTag.title == title) }
-    tagAdapter.submitList(tags)
+  private val tagsObserver = Observer<List<Tag>> {
+    tagAdapter.submitList(it)
   }
 
   private val mealsObserver = Observer<List<Meal>> {

@@ -1,4 +1,4 @@
-package com.elka.foody.presentation.tags
+package com.elka.foody.domain.meals
 
 data class Tag(
   val title: String,
