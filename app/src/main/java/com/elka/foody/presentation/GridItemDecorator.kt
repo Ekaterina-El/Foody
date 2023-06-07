@@ -22,7 +22,8 @@ class GridItemDecorator(
         if (parent.getChildAdapterPosition(view) % spanCount == 0) {
           left = spaceHrz
         }
-      } else {
+      }
+      else {
         if (parent.getChildAdapterPosition(view) < spanCount) {
           left = spaceHrz
         }
