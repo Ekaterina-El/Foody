@@ -5,4 +5,7 @@
   <string name="basket_screen">Корзина</string>
   <string name="account_screen">Аккаунт</string>
   <string name="gps_off">Отсутствует сигнал GPS</string>
+  <string name="price">%1$d₽</string>
+  <string name="weight">%1$dг</string>
+  <string name="add_to_backet">Добавить в корзину</string>
 </resources>
