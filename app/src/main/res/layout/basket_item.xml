@@ -35,10 +35,9 @@
           android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/imageContent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:padding="15dp"
-            app:imageUrlWithoutCrop="@{basketItem.meal.imageUrl}"
             app:layout_constraintDimensionRatio="W,1:1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

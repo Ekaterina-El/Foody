@@ -23,22 +23,8 @@ object BasketRepositoryImpl : BasketRepository {
     try {
       val items = mutableListOf<BasketItem>()
 
-      repeat(4) {
-        val count = Random.nextInt(1, 10)
-        val meal = Meal(
-          id = it,
-          name = "Meal #$it",
-          price = Random.nextInt(450, 1500),
-          weight = Random.nextInt(450, 670),
-          description = "Description #$it",
-          imageUrl = "https://www.interviewbit.com/blog/android-projects/",
-          tags =  listOf()
-        )
-        val basketItem =  BasketItem(meal, count)
-        items.add(basketItem)
-      }
 
-      basketItems.value = items
+      //basketItems.value = items
     } catch (_: java.lang.Exception) {
 
     } finally {
@@ -49,9 +35,14 @@ object BasketRepositoryImpl : BasketRepository {
 
   override fun addMeal(meal: Meal) {
     val items = basketItems.value!!.toMutableList()
-    items.add(BasketItem(meal, count = DEFINE_COUNT_OF_MEALS))
-    basketItems.value = items
-    updateAmount()
+
+    val pos = items.indexOfFirst { it.meal.id == meal.id }
+    if (pos != -1) changeCountOfMeals(meal, items[pos].count + 1)
+    else {
+      items.add(BasketItem(meal, count = DEFINE_COUNT_OF_MEALS))
+      basketItems.value = items
+      updateAmount()
+    }
   }
 
   override fun changeCountOfMeals(meal: Meal, newCount: Int) {

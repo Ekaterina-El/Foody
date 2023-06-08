@@ -1,6 +1,8 @@
 package com.elka.foody.presentation.meals
 
+import com.elka.foody.data.basket.BasketRepositoryImpl
 import com.elka.foody.data.meals.MealsRepositoryImpl
+import com.elka.foody.domain.basket.AddMealUseCase
 import com.elka.foody.domain.meals.*
 import com.elka.foody.presentation.BaseViewModel
 import com.elka.foody.utils.Work
@@ -14,6 +16,9 @@ class MealsViewModel: BaseViewModel() {
   private val getTagsUseCase = GetTagsUseCase(repository)
   private val getCurrentTagUseCase = GetCurrentTagUseCase(repository)
 
+  private val basketRep = BasketRepositoryImpl
+  private val addMealUseCase = AddMealUseCase(basketRep)
+
   val meals = getAllMealsUseCase.getAll()
   val tags = getTagsUseCase.getTags()
 
@@ -26,5 +31,9 @@ class MealsViewModel: BaseViewModel() {
 
   fun setActiveTag(it: Tag) {
     setActiveTagUseCase.setActive(it)
+  }
+
+  fun addToBasket(meal: Meal) {
+    addMealUseCase.addMeal(meal)
   }
 }
