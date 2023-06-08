@@ -23,4 +23,9 @@
         android:name="category"
         app:argType="string" />
   </fragment>
+  <fragment
+      tools:layout="@layout/basket_fragment"
+      android:id="@+id/basketFragment"
+      android:name="com.elka.foody.presentation.basket.BasketFragment"
+      android:label="BasketFragment" />
 </navigation>

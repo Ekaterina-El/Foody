@@ -13,4 +13,6 @@
   <dimen name="meal_vrt">14dp</dimen>
   <dimen name="meal_hrz">8dp</dimen>
   <dimen name="tags_horz">8dp</dimen>
+  <dimen name="basket_items_vrt">16dp</dimen>
+  <dimen name="basket_items_hrz">0dp</dimen>
 </resources>

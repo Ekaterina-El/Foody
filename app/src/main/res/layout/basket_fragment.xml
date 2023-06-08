@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <data>
+    <import type="android.view.View" />
+
+    <variable
+        name="location"
+        type="String" />
+
+    <variable
+        name="date"
+        type="String" />
+
+    <variable
+        name="adapter"
+        type="com.elka.foody.presentation.basket.BasketAdapter" />
+
+    <variable
+        name="viewModel"
+        type="com.elka.foody.presentation.basket.BasketViewModel" />
+  </data>
+
+
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:id="@+id/swiper"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <LinearLayout
+          android:id="@+id/header"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:paddingHorizontal="@dimen/app_padding"
+          android:paddingVertical="@dimen/header_padding"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="@dimen/location_w"
+            android:layout_height="@dimen/location_h"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/ic_location" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/header_space"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+          <TextView
+              style="@style/head"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@{location}"
+              tools:text="Санкт-Петербург" />
+
+          <TextView
+              style="@style/subhead"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="@{date}"
+              tools:text="12 Августа, 2023" />
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/user_size"
+            android:layout_height="@dimen/user_size"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="@dimen/user_size"
+            app:cardElevation="0dp">
+
+          <ImageView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_gravity="center"
+              android:scaleType="centerCrop"
+              android:src="@drawable/human" />
+
+        </androidx.cardview.widget.CardView>
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          app:layout_constraintBottom_toTopOf="@id/btn"
+          app:layout_constraintEnd_toEndOf="parent"
+          android:gravity="center"
+          android:visibility="@{viewModel.basketItems.size() == 0 ? View.VISIBLE : View.INVISIBLE}"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/header"
+          android:orientation="vertical">
+
+        <TextView
+            android:layout_marginStart="0dp"
+            style="@style/title"
+            android:text="В корзине пусто"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            style="@style/subhead"
+            android:text="Добавь блюдо из меню"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+      </LinearLayout>
+
+
+
+      <androidx.recyclerview.widget.RecyclerView
+          tools:visibility="gone"
+          android:id="@+id/basketItems"
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_marginHorizontal="@dimen/app_padding"
+          android:adapter="@{adapter}"
+          app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+          app:layout_constraintBottom_toTopOf="@id/btn"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/header"
+          tools:listitem="@layout/basket_item" />
+
+      <Button
+          android:id="@+id/btn"
+          style="@style/text"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginHorizontal="@dimen/app_padding"
+          android:layout_marginTop="16dp"
+          android:layout_marginBottom="@dimen/app_padding"
+          android:background="@drawable/btn_wrapper"
+          tools:text="Оплатить 2 400 ₽"
+          android:textAllCaps="false"
+          android:textColor="@color/white"
+          android:textSize="16sp"
+          app:basketBuy="@{viewModel.amount}"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</layout>
