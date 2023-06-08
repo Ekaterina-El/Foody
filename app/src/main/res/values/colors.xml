@@ -12,6 +12,7 @@
   <color name="text_color">#000</color>
   <color name="swiper_color">#3364E0</color>
   <color name="r1">#F8F7F5</color>
+  <color name="count_bg">#EFEEEC</color>
   <color name="meal_bg">#F8F7F5</color>
   <color name="text_color_40">#66000000</color>
 </resources>

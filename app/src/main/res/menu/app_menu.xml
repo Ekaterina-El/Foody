@@ -6,6 +6,7 @@
   <item
       android:title="@string/search_screen" android:icon="@drawable/ic_search" />
   <item
+      android:id="@id/basketFragment"
       android:title="@string/basket_screen" android:icon="@drawable/ic_basket" />
   <item
       android:title="@string/account_screen" android:icon="@drawable/ic_account" />

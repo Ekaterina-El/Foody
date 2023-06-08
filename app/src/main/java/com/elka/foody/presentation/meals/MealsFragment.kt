@@ -117,14 +117,13 @@ class MealsFragment : Fragment() {
 
     mealsAdapter.onItemClickListener = {
       openMealDialog(it)
-      Toast.makeText(requireContext(), "Meal ${it.name}", Toast.LENGTH_SHORT).show()
     }
   }
 
   private val mealDialogListener by lazy {
     object : MealDialog.Companion.Listener {
       override fun addToBasket(meal: Meal) {
-        Toast.makeText(requireContext(), "Added", Toast.LENGTH_SHORT).show()
+        mealsViewModel.addToBasket(meal)
         mealDialog.disagree()
       }
     }

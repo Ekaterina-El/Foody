@@ -8,4 +8,6 @@
   <string name="price">%1$d₽</string>
   <string name="weight">%1$dг</string>
   <string name="add_to_backet">Добавить в корзину</string>
+  <string name="buy">Оплатить</string>
+  <string name="count">%1$d</string>
 </resources>
