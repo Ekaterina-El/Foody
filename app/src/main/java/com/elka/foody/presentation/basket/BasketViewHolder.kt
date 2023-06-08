@@ -12,10 +12,5 @@ class BasketViewHolder(private val binding: BasketItemBinding) : RecyclerView.Vi
     binding.basketItem = basketItem
     binding.minus.setOnClickListener { onItemClickListener?.invoke(basketItem.meal, basketItem.count - 1) }
     binding.plus.setOnClickListener { onItemClickListener?.invoke(basketItem.meal, basketItem.count + 1) }
-
-    binding.root.setOnClickListener {
-       loadImageWithoutCrop(binding.imageContent, basketItem.meal.imageUrl)
-    }
-
   }
 }

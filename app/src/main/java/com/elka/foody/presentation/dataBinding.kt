@@ -24,6 +24,7 @@ fun loadImageWithoutCrop(imageView: ImageView, url: String?) {
   Glide.with(imageView.context)
     .load(url)
     .placeholder(R.drawable.placeholder)
+    .dontAnimate()
     .into(imageView)
 }
 
